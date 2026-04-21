@@ -1,28 +1,13 @@
+import wave as wave                 #wave形式の音声波形を読み込むためのモジュール(wave)をインポート
+import numpy as np                  #numpyをインポート（波形データを2byteの数値列に変換するために使用）
+import scipy.signal as sp           #scipy.signalをインポート（短時間フーリエ変換と逆変換のために使用）
+import sounddevice as sd            #sounddeviceをインポート（音声の再生のために使用）
+import matplotlib.pyplot as plt     #matplotlib.pyplotをインポート（スペクトログラムの描画のために使用）
 
-
-#wave形式の音声波形を読み込むためのモジュール(wave)をインポート
-import wave as wave
-
-#numpyをインポート（波形データを2byteの数値列に変換するために使用）
-import numpy as np
-
-#scipyのsignalモジュールをインポート（stft等信号処理計算用)
-import scipy.signal as sp
-
-#sounddeviceモジュールをインポート
-import sounddevice as sd
-
-#matplotlibをインポート（スペクトログラム描画用）
-import matplotlib.pyplot as plt
-
-#読み込むサンプルファイル
-sample_wave_file="./CMU_ARCTIC/cmu_us_aew_arctic/wav/arctic_a0001.wav"
-
-#ファイルを読み込む
-wav=wave.open(sample_wave_file)
-
-#PCM形式の波形データを読み込み
-data=wav.readframes(wav.getnframes())
+#ファイル・データ読み込み
+sample_wave_file="./CMU_ARCTIC/cmu_us_aew_arctic/wav/arctic_a0001.wav"  #読み込むサンプルファイル
+wav=wave.open(sample_wave_file)                                         #ファイルを読み込む
+data=wav.readframes(wav.getnframes())                                   #PCM形式の波形データを読み込み
 
 #dataを2バイトの数値列に変換
 data=np.frombuffer(data, dtype=np.int16)
