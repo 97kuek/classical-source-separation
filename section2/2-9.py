@@ -24,7 +24,7 @@ data=np.frombuffer(data, dtype=np.int16)
 fig=plt.figure(figsize=(10,4))
 
 #スペクトログラムを表示する
-spectrum,  freqs, t, im=plt.specgram(data,NFFT=512,noverlap=512/16*15,Fs=wav.getframerate(),cmap="gray")
+spectrum,  freqs, t, im=plt.specgram(data,NFFT=512,noverlap=512//16*15,Fs=wav.getframerate(),cmap="gray")
 
 #カラーバーを表示する
 fig.colorbar(im).set_label('Intensity [dB]')
